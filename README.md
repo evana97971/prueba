@@ -1,1 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Teleenfermería Comunitaria</title>
 
+  <!-- Tipografía profesional -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Favicon institucional -->
+  <link rel="icon" type="image/png" href="/images/logo-teleenfermeria.png">
+
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(to bottom right, #f0f9ff, #ffffff, #eef2ff);
+      color: #1e293b;
+      margin: 0;
+      overflow-x: hidden;
+    }
+
+    /* Animaciones */
+    @keyframes fadeIn { from {opacity:0; transform:translateY(20px);} to {opacity:1; transform:translateY(0);} }
+    @keyframes slideIn { from {opacity:0; transform:translateX(-30px);} to {opacity:1; transform:translateX(0);} }
+    .fade-in { animation: fadeIn 1s ease forwards; }
+    .slide-in { animation: slideIn 1s ease forwards; }
+
+    /* Encabezado */
+    header {
+      background: #ffffff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      position: sticky; top: 0; z-index: 50;
+    }
+    header .logo { font-weight: 700; color: #1e40af; }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(to right, #2563eb, #1e40af);
+      color: white; text-align: center;
+      padding: 5rem 1rem;
+      border-bottom-left-radius: 50px;
+      border-bottom-right-radius: 50px;
+    }
+    .hero h1 { font-size: 3rem; font-weight: 800; margin-bottom: 1rem; }
+    .hero p { color: #bfdbfe; font-size: 1.1rem; }
+
+    /* Buscador */
+    .search-box { text-align:center; margin:2rem 0; }
+    .search-box input {
+      width:80%; max-width:600px;
+      padding:12px 16px; border-radius:12px;
+      border:1px solid #cbd5e1; font-size:1rem;
+      outline:none; transition:0.3s;
+    }
+    .search-box input:focus {
+      border-color:#2563eb;
+      box-shadow:0 0 0 3px rgba(37,99,235,0.2);
+    }
+
+    /* Tarjetas */
+    .card {
+      background: linear-gradient(to bottom right, #2563eb, #1e40af);
+      color: white;
+      border-radius: 20px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+      padding: 1.5rem; text-align: center;
+      transition: transform 0.3s ease;
+      animation: fadeIn 1s ease forwards;
+    }
+    .card:hover { transform: translateY(-5px); }
+
+    /* Formulario */
+    form {
+      background: #ffffff;
+      border-radius: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      padding: 2rem;
+      animation: fadeIn 1.2s ease forwards;
+    }
+    input, select, textarea {
+      width: 100%; border: 1px solid #cbd5e1;
+      border-radius: 12px; padding: 10px 14px;
+      margin-bottom: 1rem; font-size: 1rem;
+      outline: none; transition: 0.3s;
+    }
+    input:focus, select:focus, textarea:focus {
+      border-color: #2563eb;
+      box-shadow: 0 0 0 3px rgba(37,99,235,0.2);
+    }
+    button {
+      width: 100%; background: #2563eb; color: white;
+      font-weight: 600; padding: 12px;
+      border-radius: 12px; border: none;
+      cursor: pointer; transition: background 0.3s ease;
+    }
+    button:hover { background: #1e40af; }
+
+    /* Footer */
+    footer {
+      background: #0f172a; color: #94a3b8;
+      text-align: center; padding: 1rem;
+      font-size: 0.9rem; margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Encabezado -->
+  <header class="fade-in">
+    <div style="max-width:1200px;margin:auto;display:flex;justify-content:space-between;align-items:center;padding:1rem;">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <img src="/images/logo-teleenfermeria.png" alt="Logo Teleenfermería Comunitaria" style="height:45px;">
+        <span style="font-weight:700;color:#1e40af;font-size:1.2rem;">Teleenfermería Comunitaria</span>
+      </div>
+      <a href="tel:+51981558141" style="color:#2563eb;font-weight:600;">📞 Llamar ahora</a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero fade-in">
+    <img src="/images/logo-teleenfermeria.png" alt="Logo Teleenfermería Comunitaria" style="height:90px;margin-bottom:20px;">
+    <h1>Teleenfermería Comunitaria</h1>
+    <p>Contacta directamente con nuestro equipo de enfermería. Estamos aquí para ayudarte.</p>
+  </section>
+
+  <!-- Buscador -->
+  <section class="search-box">
+    <input type="text" id="searchInput" placeholder="Buscar por nombre o especialidad..." onkeyup="filterCards()">
+  </section>
+
+  <!-- Equipo -->
+  <section style="max-width:1200px;margin:auto;padding:3rem 1rem;">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:2rem;">
+      <div style="width:40px;height:40px;border-radius:10px;background:#2563eb;color:#fff;display:flex;align-items:center;justify-content:center;">👩‍⚕️</div>
+      <div>
+        <h2 style="font-size:2rem;font-weight:700;margin:0;">Equipo de Enfermería</h2>
+        <p style="color:#64748b;font-size:0.9rem;">Personal disponible para tu atención</p>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;" id="cardsContainer">
+      <div class="card" data-name="Maryorit Mercedes Huamacto" data-specialty="Enfermera">
+        <img src="/images/logo-maryorit.png" alt="Logo Maryorit Mercedes Huamacto" style="height:80px;margin:auto;margin-bottom:10px;">
+        <h3>Maryorit Mercedes Huamacto</h3>
+        <p>Enfermera</p>
+        <a href="tel:+51981558141" style="color:#fff;">📞 +51 981558141</a><br>
+        <a href="https://wa.me/51981558141" target="_blank" style="color:#16a34a;">💬 WhatsApp</a>
+      </div>
+
+      <div class="card" data-name="Maryori Barahona" data-specialty="Enfermera">
+        <img src="/images/logo-maryori.png" alt="Logo Maryori Barahona" style="height:80px;margin:auto;margin-bottom:10px;">
+        <h3>Maryori Barahona</h3>
+        <p>Enfermera</p>
+        <a href="tel:+51920244549" style="color:#fff;">📞 +51 920244549</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Formulario -->
+  <section style="max-width:600px;margin:auto;padding:2rem;">
+    <h2 style="font-size:2rem;font-weight:700;margin-bottom:1rem;">Solicitar Consulta</h2>
+    <form>
+      <input type="text" name="patientName" placeholder="Nombre completo" required>
+      <input type="text" name="dni" placeholder="DNI" required>
+      <select name="consultationType" required>
+        <option value="medica">Consulta Médica</option>
+        <option value="pediatrica">Consulta Pediátrica</option>
+        <option value="emergencia">Emergencia</option>
+      </select
