@@ -140,7 +140,7 @@
 
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;" id="cardsContainer">
       <div class="card" data-name="Maryorit Mercedes Huamacto" data-specialty="Enfermera">
-        <img src="logo-maryorit.png" alt="Logo Maryorit Mercedes Huamacto" style="height:250px;margin:auto;margin-bottom:100px;">
+        <img src="logo-maryorit.png" alt="Logo Maryorit Mercedes Huamacto" style="height:200px;margin:auto;margin-bottom:100px;">
         <h3>Maryorit Mercedes Huamacto</h3>
         <p>Enfermera</p>
         <a href="tel:+51981558141" style="color:#fff;">📞 +51 981558141</a><br>
@@ -148,7 +148,7 @@
       </div>
 
       <div class="card" data-name="Maryori Barahona" data-specialty="Enfermera">
-        <img src="logo-maryori.png" alt="Logo Maryori Barahona" style="height:150px;margin:auto;margin-bottom:10px;">
+        <img src="logo-maryori.png" alt="Logo Maryori Barahona" style="height:200px;margin:auto;margin-bottom:100px;">
         <h3>Maryori Barahona</h3>
         <p>Enfermera</p>
         <a href="tel:+51920244549" style="color:#fff;">📞 +51 920244549</a>
@@ -156,14 +156,19 @@
     </div>
   </section>
 
-  <!-- Formulario -->
-  <section style="max-width:600px;margin:auto;padding:2rem;">
-    <h2 style="font-size:6rem;font-weight:700;margin-bottom:5rem;">Solicitar Consulta</h2>
-    <form>
-      <input type="text" name="patientName" placeholder="Nombre completo" required>
-      <input type="text" name="dni" placeholder="DNI" required>
-      <select name="consultationType" required>
-        <option value="medica">Consulta Médica</option>
-        <option value="pediatrica">Consulta Pediátrica</option>
-        <option value="emergencia">Emergencia</option>
-      </select
+<section style="max-width:600px;margin:auto;padding:2rem;">
+  <h2 style="font-size:2rem;font-weight:700;margin-bottom:1rem;">Solicitar Consulta</h2>
+  <form>
+    <input type="text" name="patientName" placeholder="Nombre completo" required>
+    <input type="text" name="dni" placeholder="DNI" required>
+    <select name="consultationType" required>
+      <option value="medica">Consulta Médica</option>
+      <option value="pediatrica">Consulta Pediátrica</option>
+      <option value="emergencia">Emergencia</option>
+    </select>
+    <textarea name="reason" rows="4" placeholder="Motivo de consulta..." required></textarea>
+    
+    <!-- Botón de enviar -->
+    <button type="submit">Enviar Solicitud</button>
+  </form>
+</section>
